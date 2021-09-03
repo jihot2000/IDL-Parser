@@ -1853,7 +1853,7 @@ enumerator [EnumTypeCode enumTP]
     String name = null;
     ArrayList<Annotation> annotations = new ArrayList<Annotation>();
 }
-    :   (annotation_appl { annotations.add($annotation_appl.annotation); })* identifier
+    :   (annotation_appl { annotations.add($annotation_appl.annotation); })* identifier (EQUAL (INTEGER_LITERAL | OCTAL_LITERAL | HEX_LITERAL))?
         {
             String error = ctx.checkIdentifier(Definition.Kind.TYPE_DECLARATION, ctx.getScope(), $identifier.id);
             if (error != null)
